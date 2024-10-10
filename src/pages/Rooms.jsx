@@ -15,6 +15,7 @@ export default function Rooms() {
                 </Col>
                 <Col sm={10}>
                     <p>room cards</p>
+                    <p>test push</p>
 
                 </Col>
 
