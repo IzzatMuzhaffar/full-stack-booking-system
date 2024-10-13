@@ -1,43 +1,56 @@
-import { Col, Navbar, Row } from 'react-bootstrap'
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import Home from './pages/Home'
-import Rooms from './pages/Rooms'
+import { useEffect } from 'react'
+import { Button, Col, Navbar, Row } from 'react-bootstrap'
+import { BrowserRouter, Outlet, Route, Routes, useNavigate } from 'react-router-dom'
+// import { Provider } from 'react-redux'
+// import store from "./store"
+import useLocalStorage from 'use-local-storage'
+import HomePage from './pages/HomePage'
+import BookingPage from './pages/BookingPage'
+import LoginPage from './pages/LoginPage'
+import ErrorPage from './pages/ErrorPage'
 
 export function Layout() {
+  const [authToken, setAuthToken] = useLocalStorage("authToken", "")
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!authToken) {
+      navigate("/login")
+    }
+  }, [authToken, navigate])
+
+  const handleLogout = () => {
+    setAuthToken("")
+  }
+
   return (
     <>
-      <Navbar bg="light" variant="light" className='py-0'>
-        <Row style={{ fontSize: 12, width: "100%" }}>
-          <Col sm={7}>
+      <Navbar bg="light" variant="light" className='py-2'>
+        <Row style={{ fontSize: 16, width: "100%" }}>
+          <Col sm={6}>
             <ul className="nav" style={{ flexWrap: 'nowrap' }}>
               <li className="nav-item">
-                <a className="nav-link" href="#">Booking System</a>
+                <a className="nav-link" >Booking System</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Rooms</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Activities</a>
+                <a className="nav-link" href="/">Rooms</a>
               </li>
             </ul>
           </Col>
-          <Col sm={5} >
+          <Col sm={6} >
             <ul className="nav justify-content-end" style={{ flexWrap: 'nowrap' }}>
               <li className="nav-item">
-                <a className="nav-link" href="#">Manage bookings</a>
+                <a className="nav-link" href="/booking">Manage bookings</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Sign in</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">Create account</a>
-              </li>
+              <Button className="rounded-pill px-4" onClick={handleLogout}>Log out</Button>
             </ul>
           </Col>
         </Row>
       </Navbar>
       <Outlet />
+      <Row className='py-5 mt-4 bg-light justify-content-center'>
+        trademarked by me
+      </Row>
     </>
   )
 }
@@ -48,9 +61,11 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/rooms" element={<Rooms />} />
+          <Route index element={<HomePage />} />
+          <Route path="booking" element={<BookingPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
+        <Route path="login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
     // </Provider>
