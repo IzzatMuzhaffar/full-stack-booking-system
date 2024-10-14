@@ -28,7 +28,7 @@ export default function NewBookingModal({ show, handleClose }) {
         }
 
         axios
-            .post("https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.replit.dev/bookings", data)
+            .post("https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.repl.co/bookings", data)
             .then((response) => {
                 console.log("Success:", response.data)
                 handleClose()

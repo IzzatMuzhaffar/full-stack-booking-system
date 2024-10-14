@@ -30,7 +30,7 @@ export default function UpdateBookingModal({ showUpdateModal, handleCloseUpdateM
         }
 
         axios
-            .put(`https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.replit.dev/bookings/${bookingId}`, data)
+            .put(`https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.repl.co/bookings/${bookingId}`, data)
             .then((response) => {
                 console.log("Success:", response.data)
                 handleCloseUpdateModal()

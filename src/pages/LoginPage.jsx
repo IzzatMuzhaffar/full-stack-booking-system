@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Button, Col, Form, Image, Row } from 'react-bootstrap'
+import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import useLocalStorage from 'use-local-storage'
 
 export default function LoginPage() {
     const loginImage = 'https://picsum.photos/1000/750'
-    const url = 'https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.replit.dev'
+    const url = 'https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.repl.co'
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -45,11 +45,11 @@ export default function LoginPage() {
 
     return (
         <Row>
-            <Col sm={6}>
-                <Image src={loginImage} fluid />
+            <Col sm={7} >
+                <Image src={loginImage} fluid style={{ height: "100%" }} />
             </Col>
-            <Col sm={6} className='p-4'>
-                <Col sm={5} className='d-grid gap-2'>
+            <Col sm={5} className='p-4'>
+                <Container className='d-grid gap-2' style={{ width: "90%" }}>
                     <h2 className='mb-4 px-5' style={{ fontWeight: 'bold' }}>
                         Log in to your account
                     </h2>
@@ -75,7 +75,7 @@ export default function LoginPage() {
                             By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use. SigmaTweets may use your contact information, including your email address and phone number for purposes outlined in our Privacy Policy, like keeping your account seceure and personalising our services, including ads. Learn more. Others will be able to find you by email or phone number, when provided, unless you choose otherwise here.
                         </p>
                     </Form>
-                </Col>
+                </Container>
             </Col>
         </Row>
     )

@@ -4,7 +4,7 @@ import UpdateBookingModal from "./UpdateBookingModal";
 import DeleteBookingModal from "./DeleteBookingModal";
 
 export function BookingRoomCard({ bookingId, title, description, date, time }) {
-    const pic = "https://picsum.photos/300";
+    const pic = "https://img.freepik.com/premium-photo/party-room-with-colorful-lights-parties_9493-36429.jpg";
 
     const [showUpdateModal, setShowUpdateModal] = useState(false)
     const handleCloseUpdateModal = () => setShowUpdateModal(false)
@@ -23,7 +23,7 @@ export function BookingRoomCard({ bookingId, title, description, date, time }) {
                 maxWidth: "100%"
             }}
         >
-            <Col sm={3}>
+            <Col sm={4}>
                 <Image src={pic} fluid />
             </Col>
 
@@ -36,10 +36,10 @@ export function BookingRoomCard({ bookingId, title, description, date, time }) {
                     <p>{description}</p>
                 </Row>
                 <Row >
-                    <Button className="mx-2 mt-4" variant="light" onClick={handleShowUpdateModal} style={{ width: "75px" }}>
+                    <Button className="mx-2 mt-3" variant="light" onClick={handleShowUpdateModal} style={{ width: "75px" }}>
                         <i className="bi bi-pencil"></i>
                     </Button>
-                    <Button className="mx-2 mt-4" variant="light" onClick={handleShowDeleteModal} style={{ width: "75px" }}>
+                    <Button className="mx-2 mt-3" variant="light" onClick={handleShowDeleteModal} style={{ width: "75px" }}>
                         <i className="bi bi-trash"></i>
                     </Button>
                 </Row>

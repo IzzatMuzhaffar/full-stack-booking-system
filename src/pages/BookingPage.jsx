@@ -11,7 +11,7 @@ export default function BookingPage() {
     // Fetch bookings based on user id
     const fetchBookings = (userId) => {
         fetch(
-            `https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.replit.dev/bookings/user/${userId}`
+            `https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.repl.co/bookings/user/${userId}`
         )
             .then((response) => response.json())
             .then((data) => setBookings(data))
@@ -31,8 +31,7 @@ export default function BookingPage() {
         <Container className='pt-3 d-flex justify-content-center'>
             <Row>
                 <Col>
-                    <h2>Room Booking</h2>
-                    <p>show booking here</p>
+                    <h2>Booking List</h2>
                     {bookings.map((booking) => (
                         <BookingRoomCard key={booking.id}
                             bookingId={booking.id}
