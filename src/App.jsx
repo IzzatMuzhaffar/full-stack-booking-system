@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import { Button, Col, Navbar, Row } from 'react-bootstrap'
 import { BrowserRouter, Outlet, Route, Routes, useNavigate } from 'react-router-dom'
-// import { Provider } from 'react-redux'
-// import store from "./store"
 import useLocalStorage from 'use-local-storage'
 import HomePage from './pages/HomePage'
 import BookingPage from './pages/BookingPage'
@@ -57,7 +55,6 @@ export function Layout() {
 
 export default function App() {
   return (
-    // <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -68,7 +65,6 @@ export default function App() {
         <Route path="login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
-    // </Provider>
   )
 }
 

@@ -1,17 +1,16 @@
-import { Col, Container, Row } from 'react-bootstrap'
-
 import { useEffect, useState } from 'react'
+import { Col, Container, Row } from 'react-bootstrap'
 import { jwtDecode } from 'jwt-decode'
 import { BookingRoomCard } from '../components/BookingRoomCard'
+import { BASE_URL } from '../components/BaseUrl'
 
 export default function BookingPage() {
     const [bookings, setBookings] = useState([])
 
-
     // Fetch bookings based on user id
     const fetchBookings = (userId) => {
         fetch(
-            `https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.repl.co/bookings/user/${userId}`
+            `${BASE_URL}/bookings/user/${userId}`
         )
             .then((response) => response.json())
             .then((data) => setBookings(data))
@@ -42,8 +41,6 @@ export default function BookingPage() {
                         />
                     ))}
                 </Col>
-
-
             </Row>
         </Container>
     )

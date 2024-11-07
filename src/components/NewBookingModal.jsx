@@ -2,6 +2,7 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
+import { BASE_URL } from "./BaseUrl";
 
 export default function NewBookingModal({ show, handleClose }) {
     const [bookingTitle, setBookingTitle] = useState("")
@@ -28,7 +29,7 @@ export default function NewBookingModal({ show, handleClose }) {
         }
 
         axios
-            .post("https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.repl.co/bookings", data)
+            .post(`${BASE_URL}/bookings`, data)
             .then((response) => {
                 console.log("Success:", response.data)
                 handleClose()

@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react'
 import { Button, Col, Container, Form, Image, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import useLocalStorage from 'use-local-storage'
+import { BASE_URL } from '../components/BaseUrl'
 
 export default function LoginPage() {
     const loginImage = 'https://picsum.photos/1000/750'
-    const url = 'https://00eedf02-2e35-4427-971f-90cc71844922-00-2m2f638mfzuk2.sisko.repl.co'
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
@@ -23,7 +23,7 @@ export default function LoginPage() {
     const handleSignUp = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post(`${url}/signup`, { username, password })
+            const res = await axios.post(`${BASE_URL}/signup`, { username, password })
             console.log(res.data)
         } catch (error) {
             console.error(error)
@@ -33,7 +33,7 @@ export default function LoginPage() {
     const handleLogin = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post(`${url}/login`, { username, password })
+            const res = await axios.post(`${BASE_URL}/login`, { username, password })
             if (res.data && res.data.auth === true && res.data.token) {
                 setAuthToken(res.data.token)
                 console.log("Login was successful, token saved")
