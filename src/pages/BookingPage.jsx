@@ -8,15 +8,6 @@ export default function BookingPage() {
     const [bookings, setBookings] = useState([])
 
     // Fetch bookings based on user id
-    const fetchBookings = (userId) => {
-        fetch(
-            `${BASE_URL}/bookings/user/${userId}`
-        )
-            .then((response) => response.json())
-            .then((data) => setBookings(data))
-            .catch((error) => console.error("Error:", error))
-    }
-
     useEffect(() => {
         const token = localStorage.getItem("authToken")
         if (token) {
@@ -25,6 +16,15 @@ export default function BookingPage() {
             fetchBookings(userId)
         }
     }, [])
+
+    const fetchBookings = (userId) => {
+        fetch(
+            `${BASE_URL}/bookings/user/${userId}`
+        )
+            .then((response) => response.json())
+            .then((data) => setBookings(data))
+            .catch((error) => console.error("Error:", error))
+    }
 
     return (
         <Container className='pt-3 d-flex justify-content-center'>
