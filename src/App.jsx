@@ -38,7 +38,7 @@ export function Layout() {
           <Col sm={6} >
             <ul className="nav justify-content-end" style={{ flexWrap: 'nowrap' }}>
               <li className="nav-item">
-                <a className="nav-link" href="/booking">Manage bookings</a>
+                <a className="nav-link" href="/bookings">Manage bookings</a>
               </li>
               <Button className="rounded-pill px-4" onClick={handleLogout}>Log out</Button>
             </ul>
@@ -59,7 +59,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="booking" element={<BookingPage />} />
+          <Route path="bookings" element={<BookingPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
         <Route path="login" element={<LoginPage />} />
