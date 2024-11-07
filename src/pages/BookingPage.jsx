@@ -4,19 +4,10 @@ import { jwtDecode } from 'jwt-decode'
 import { BookingRoomCard } from '../components/BookingRoomCard'
 import { BASE_URL } from '../components/BaseUrl'
 
-export default function BookingPage() {
+export function BookingPage() {
     const [bookings, setBookings] = useState([])
 
     // Fetch bookings based on user id
-    useEffect(() => {
-        const token = localStorage.getItem("authToken")
-        if (token) {
-            const decodedToken = jwtDecode(token)
-            const userId = decodedToken.id
-            fetchBookings(userId)
-        }
-    }, [])
-
     const fetchBookings = (userId) => {
         fetch(
             `${BASE_URL}/bookings/user/${userId}`
@@ -25,6 +16,15 @@ export default function BookingPage() {
             .then((data) => setBookings(data))
             .catch((error) => console.error("Error:", error))
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem("authToken")
+        if (token) {
+            const decodedToken = jwtDecode(token)
+            const userId = decodedToken.id
+            fetchBookings(userId)
+        }
+    }, [])
 
     return (
         <Container className='pt-3 d-flex justify-content-center'>
