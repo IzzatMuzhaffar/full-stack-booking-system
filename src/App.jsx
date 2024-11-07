@@ -3,7 +3,7 @@ import { Button, Col, Navbar, Row } from 'react-bootstrap'
 import { BrowserRouter, Outlet, Route, Routes, useNavigate } from 'react-router-dom'
 import useLocalStorage from 'use-local-storage'
 import HomePage from './pages/HomePage'
-import { BookingPage } from './pages/BookingPage'
+import BookingPage from './pages/BookingPage'
 import LoginPage from './pages/LoginPage'
 import ErrorPage from './pages/ErrorPage'
 

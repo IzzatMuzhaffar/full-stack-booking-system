@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode'
 import { BookingRoomCard } from '../components/BookingRoomCard'
 import { BASE_URL } from '../components/BaseUrl'
 
-export function BookingPage() {
+export default function BookingPage() {
     const [bookings, setBookings] = useState([])
 
     // Fetch bookings based on user id
