@@ -35,6 +35,7 @@ export default function UpdateBookingModal({ showUpdateModal, handleCloseUpdateM
             .then((response) => {
                 console.log("Success:", response.data)
                 handleCloseUpdateModal()
+                window.location.reload()
             })
             .catch((error) => {
                 console.error("Error", error)

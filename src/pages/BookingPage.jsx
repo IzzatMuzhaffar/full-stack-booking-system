@@ -6,15 +6,27 @@ import { BASE_URL } from '../components/BaseUrl'
 
 export default function BookingPage() {
     const [bookings, setBookings] = useState([])
+    const [bookingsExist, setBookingsExist] = useState(false)
 
     // Fetch bookings based on user id
     const fetchBookings = (userId) => {
         fetch(
             `${BASE_URL}/bookings/user/${userId}`
         )
-            .then((response) => response.json())
-            .then((data) => setBookings(data))
-            .catch((error) => console.error("Error:", error))
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch bookings')
+                }
+                return response.json()
+            })
+            .then((data) => {
+                setBookings(data)
+                setBookingsExist(true)
+            })
+            .catch((error) => {
+                console.error("Error:", error)
+                setBookingsExist(false)
+            })
     }
 
     useEffect(() => {
@@ -31,15 +43,20 @@ export default function BookingPage() {
             <Row>
                 <Col>
                     <h2>Booking List</h2>
-                    {bookings.map((booking) => (
-                        <BookingRoomCard key={booking.id}
-                            bookingId={booking.id}
-                            title={booking.title}
-                            description={booking.description}
-                            date={booking.date}
-                            time={booking.time}
-                        />
-                    ))}
+                    {bookingsExist ?
+                        <>
+                            {bookings.map((booking) => (
+                                <BookingRoomCard key={booking.id}
+                                    bookingId={booking.id}
+                                    title={booking.title}
+                                    description={booking.description}
+                                    date={booking.date}
+                                    time={booking.time}
+                                />
+                            ))}
+                        </>
+                        : <p>No bookings. Please return to Rooms.</p>
+                    }
                 </Col>
             </Row>
         </Container>

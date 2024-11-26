@@ -12,6 +12,7 @@ export default function DeleteBookingModal({ showDeleteModal, handleCloseDeleteM
             .then((response) => {
                 console.log("Success:", response.data)
                 handleCloseDeleteModal()
+                window.location.reload()
             })
             .catch((error) => {
                 console.error("Error", error)
